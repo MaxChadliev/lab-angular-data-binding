@@ -1,12 +1,11 @@
 
   
-    <div>
+    <div class = "searchbar">
       <label for="foods_name"> Search foods: </label>
       <input id="foods_name" placeholder="food name"
         type="text" [(ngModel)]="foodsSearched" (keyup)="searchItems()">
     </div>
     
-  
 <div *ngFor = "let singleFood of foodList">
   <ul>
     <p>{{singleFood.name}}</p>
@@ -16,25 +15,9 @@
 
 </div>
 
-  
-
-
-
-
-<div *ngFor="let oneFood of filteredFood" >
-  <ul>
-      <p>{{oneFood.name}}</p>
-      <p>{{oneFood.calories}}</p>
-      <img [src]="oneFood.image">
-      <p>{{oneFood.quantity}}</p>
-  </ul>
-
-</div>
-
-
-
-
-
+<button (click)="addFood()">Submit New Food</button>
+<form (submit) = "addFood()" *ngIf = "formShowing">
+    <h3>Add new Food Item</h3>
 <div class = "container-fluid">
     <div>
       <label for="food-name">Name:</label>
@@ -57,6 +40,51 @@
     </div>
     <br>
     
-    <button (click)="addFood()">Submit New Food</button>
-    </div>
+  </div>
+  <button>Submit</button>
+  </form>
+  
 
+<br>
+
+<div class = "first-list">
+<div *ngFor="let oneFood of filteredFood" class = "foodbox" >
+  <ul>
+    <p>{{oneFood.name}}</p>
+    <p>{{oneFood.calories}}</p>
+    <img [src]="oneFood.image">
+    <p>{{oneFood.quantity}}</p>
+  </ul>
+  <button (click)="addToMenu(oneFood)">Add to List</button>
+</div>
+ 
+
+</div>
+
+<div class = "second-list">
+    <div *ngFor="let oneFood of newList" class = "foodbox" >
+        <ul>
+          <p>{{oneFood.name}}</p>
+          <p>{{oneFood.calories}}</p>
+       
+        </ul>
+
+
+
+</div>
+
+
+  
+  
+ 
+
+
+
+
+
+
+
+<!-- <div *ngIf="addToList()">
+      <p>{{oneFood.name}}</p>
+      <p>{{oneFood.calories}}</p>
+  </div> -->

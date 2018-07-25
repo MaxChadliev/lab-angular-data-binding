@@ -12,8 +12,8 @@ export class FoodListComponent implements OnInit {
   filteredFood: Array<any> = [];
 
   newFood: Object = {};
-  listFood: Object = {};
-
+  newList:Array<any>;
+  
   constructor() { }
 
   ngOnInit() {
@@ -26,11 +26,11 @@ export class FoodListComponent implements OnInit {
     this.filteredFood = this.foods.filter(singleFood => {
       return singleFood.name.toLowerCase().includes(this.foodsSearched.toLowerCase())
     });
-     console.log(this.filteredFood)
   }
 
   addFood() {
     this.foods.push(this.newFood);
+    this.toggleForm()
   
   this.newFood= {
     name: "",
@@ -40,15 +40,19 @@ export class FoodListComponent implements OnInit {
   }
 }
 
-  addToList() {
-    this.foods.push(this.listFood);
 
-    this.listFood= {
-      name: "",
-      calories: "",
-    }
+  formShowing:boolean = false
+
+  toggleForm(){
+    this.formShowing = !this.formShowing
+
   }
-  
+
+
+ addToMenu(thingToAdd){
+
+    this.filteredFood.unshift(thingToAdd)
+}
 
 
   

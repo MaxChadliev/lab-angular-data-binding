@@ -1,0 +1,20 @@
+img {
+  width: 200px;
+}
+
+.foodbox {
+  border: 2px solid grey;
+  width: 300px
+}
+
+.searchbar {
+  float: right;
+}
+
+.first-list {
+  float: left
+}
+
+.second-list {
+  float: right
+}
