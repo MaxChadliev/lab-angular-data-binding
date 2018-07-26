@@ -1,0 +1,28 @@
+<button (click)="addFood()"type = "button">Submit New Food</button>
+<form (submit) = "addFood()" >
+    <h3>Add new Food Item</h3>
+<div class = "container-fluid">
+    <div>
+      <label for="food-name">Name:</label>
+      <input #name type="text" name = "name" [(ngModel)]="newFood.name">
+    </div>
+    <br>
+    <div>
+      <label for="food-calories">Calories:</label>
+      <input #email type="text" name = "calories" [(ngModel)]="newFood.calories">
+    </div>
+    <br>
+    <div>
+      <label for="food-image">Image:</label>
+      <input #image type="text" name = "image" [(ngModel)]="newFood.image">
+    </div>
+    <br>
+    <div>
+      <label for="food-quantity">Quantity:</label>
+      <input #quantity type="text" name = "quantity" [(ngModel)]="newFood.quantity">
+    </div>
+    <br>
+    
+  </div>
+  <button>Submit</button>
+  </form>

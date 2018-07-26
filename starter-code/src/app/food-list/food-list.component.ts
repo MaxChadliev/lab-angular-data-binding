@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import foods from '../foods';
+import { FoodServicesService } from '../services/food-services.service';
 
 @Component({
   selector: 'app-food-list',
@@ -11,14 +12,14 @@ export class FoodListComponent implements OnInit {
   foodsSearched: String = "";
   filteredFood: Array<any> = [];
 
-  newFood: Object = {};
-  newList:Array<any>;
+  newList:Array<any> = [];
   
-  constructor() { }
+  constructor(public theService: FoodServicesService) { }
 
   ngOnInit() {
     this.foods = foods;
     this.filteredFood = foods;
+    this.foods = this.theService.serviceFoodList;
   
   }
   
@@ -28,17 +29,6 @@ export class FoodListComponent implements OnInit {
     });
   }
 
-  addFood() {
-    this.foods.push(this.newFood);
-    this.toggleForm()
-  
-  this.newFood= {
-    name: "",
-    calories: "",
-    image: "",
-    quantity: ""
-  }
-}
 
 
   formShowing:boolean = false
@@ -51,7 +41,7 @@ export class FoodListComponent implements OnInit {
 
  addToMenu(thingToAdd){
 
-    this.filteredFood.unshift(thingToAdd)
+    this.newList.unshift(thingToAdd)
 }
 
 

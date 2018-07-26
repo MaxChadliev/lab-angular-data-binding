@@ -15,34 +15,7 @@
 
 </div>
 
-<button (click)="addFood()">Submit New Food</button>
-<form (submit) = "addFood()" *ngIf = "formShowing">
-    <h3>Add new Food Item</h3>
-<div class = "container-fluid">
-    <div>
-      <label for="food-name">Name:</label>
-      <input #name type="text" [(ngModel)]="newFood.name">
-    </div>
-    <br>
-    <div>
-      <label for="food-calories">Calories:</label>
-      <input #email type="text" [(ngModel)]="newFood.calories">
-    </div>
-    <br>
-    <div>
-      <label for="food-image">Image:</label>
-      <input #image type="text" [(ngModel)]="newFood.image">
-    </div>
-    <br>
-    <div>
-      <label for="food-quantity">Quantity:</label>
-      <input #quantity type="text" [(ngModel)]="newFood.quantity">
-    </div>
-    <br>
-    
-  </div>
-  <button>Submit</button>
-  </form>
+
   
 
 <br>
@@ -51,7 +24,7 @@
 <div *ngFor="let oneFood of filteredFood" class = "foodbox" >
   <ul>
     <p>{{oneFood.name}}</p>
-    <p>{{oneFood.calories}}</p>
+    <p>{{oneFood.calories | numToName}}</p>
     <img [src]="oneFood.image">
     <p>{{oneFood.quantity}}</p>
   </ul>
@@ -65,7 +38,7 @@
     <div *ngFor="let oneFood of newList" class = "foodbox" >
         <ul>
           <p>{{oneFood.name}}</p>
-          <p>{{oneFood.calories}}</p>
+          <p>{{oneFood.calories | numToName}}</p>
        
         </ul>
 
